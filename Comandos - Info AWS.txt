@@ -1,0 +1,85 @@
+AWS
+--
+aws --version
+
+==============
+SSH
+--
+ssh -> port 22 : view security group
+iPv4 Public Ip: ej: 35.180.100.144
+key -> EC2Tutorial.pem
+==============
+Linux/Mac
+
+ssh -i EC2Tutorial.pem ec2-user@35.180.100.144
+//posible error "EC2Tutorial.pem" bad permissions
+
+chmod 0400 EC2Tutorial.pem
+ssh -i EC2Tutorial.pem ec2-user@35.180.100.144
+
+exit
+--------
+Windows
+
+Putty
+PuttyGen
+->Load Private Key - .all files
+->Select: EC2Tutorial.pem
+->Save private key
+EC2Tutorial.ppk 
+
+Open Putty
+ip: ec2-user@35.180.100.144
+port: 22
+Save: MyEC2Instance.ppk
+
+SSH
+-Auth
+Private key file for authentication:
+MyEC2Instance.ppk
+
+Go Session - Save //click again
+
+whoami
+- ec2-user
+ping google.com
+exit
+--------
+Windows 10
+Powershell or CMD
+ssh
+You can see many options for ssh
+For example -i: identity_file
+
+ssh -i C:\Users\Strevens\Desktop\AWS\EC2Tutorial.pem ec2-user@35.180.100.144
+yes
+//Possible error UNPROTECTED PRIVATE KEY
+
+- Open option properties in the file EC2Tutorial.pem
+- Secutiry
+- Advanced
+- Owner --Change
+----------Strevens //name user -Check Names
+
+- Enable Inheritance
+- Remove other user - Apply- ok
+
+ssh -i C:\Users\Strevens\Desktop\AWS\EC2Tutorial.pem ec2-user@35.180.100.144
+-------------
+-------------
+
+IAM
+Roles
+Rol name: DemoRoleForEC2
+Policy name: IAMReadOnlyAccess
+
+InstanceEC2 - My First Instance
+Click right
+Instance Settings -> Attach/Replace IAM Role
+Select: DemoRoleForEC2
+
+Session Manager
+--
+aws --version
+aws iam list-users
+
