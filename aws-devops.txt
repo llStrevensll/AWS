@@ -1,0 +1,39 @@
+install CLI
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
+
+cli aws  v2
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+C:\Program Files\Amazon\AWSCLIV2
+
+aws -
+
+
+aws console:
+IAM
+   Users
+	Security credentials
+	  Create access key
+
+
+configure:
+aws configure
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+
+C:\Users\USERNAME\.aws\credentials on Windows.
+
+~/.aws/config on Linux or macOS, 
+
+
+$ aws configure
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]: us-west-2
+Default output format [None]: json
+
+Comment:
+https://stackoverflow.com/questions/43217469/how-do-you-comment-out-lines-in-aws-cli-config-and-credentials-files#:~:text=1%20Answer&text=You%20can%20comment%20lines%20by%20using%20the%20%23%20character%2C%20e.g.
+
+
+
+
+
