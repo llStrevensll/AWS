@@ -34,6 +34,35 @@ Comment:
 https://stackoverflow.com/questions/43217469/how-do-you-comment-out-lines-in-aws-cli-config-and-credentials-files#:~:text=1%20Answer&text=You%20can%20comment%20lines%20by%20using%20the%20%23%20character%2C%20e.g.
 
 
+=============================
+CodeCommit
+
+https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-ssh-windows.html
 
 
+
+ssh-keygen
+   C:\Users\user/.ssh/id_rsa_aws_educate
+
+
+aws console:
+IAM
+   Users
+	Security credentials
+	  Upload ssh key
+
+//edit config
+Host git-codecommit.*.amazonaws.com
+  User <id_ssh_codecommit>
+  IdentityFile ~/.ssh/id_rsa_aws_ss
+
+
+ssh git-codecommit.us-east-2.amazonaws.com
+
+
+git clone ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/my_demoaws
+
+git add .
+git commit -m ""
+git push
 
