@@ -102,6 +102,7 @@ check delete source branch
 
 --
 Securing the repository and branches
+https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control.html#auth-and-access-control-iam-access-control-identity-based
 https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-conditional-branch.html
 
 create inline policie - json
@@ -149,3 +150,44 @@ Access denied: You don't have permission to push changes to this branch.
 To ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/my_demoaws
  ! [remote rejected] master -> master (You don't have permission to push changes to this branch.)
 error: failed to push some refs to 'ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/my_demoaws'
+
+
+
+--
+Notification
+aws-codecommit - settings
+  create notification rule
+  
+  create trigger
+
+Amazon SNS
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "CodeNotification_publish",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "codestar-notifications.amazonaws.com"
+      },
+      "Action": "SNS:Publish",
+      "Resource": "arn:aws:sns:us-east-1:1111111:codecommit-notifications-test"
+    }
+  ]
+}
+
+
+---
+aws cloudwatch
+Events
+	rules
+
+{
+  "source": [
+    "aws.codecommit"
+  ],
+  "detail-type": [
+    "CodeCommit Repository State Change"
+  ]
+}
+
