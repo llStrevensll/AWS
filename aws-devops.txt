@@ -66,3 +66,86 @@ git add .
 git commit -m ""
 git push
 
+--
+https://www.atlassian.com/git/tutorials/using-branches
+--
+git checkout -b my-feature
+
+git add .
+git commit -m ""
+git push
+
+git push --set-upstream origin my-feature
+
+create pull request
+	Destination:master       Source:my-feature	Compare
+ 
+
+merge strategy
+
+Fast forward merge
+git merge --ff-only
+ Merges the brances and moves the destination branch pointer to the tip
+ of the source branch. This is the default merge strategy in git
+
+Squash and merge
+git merge --squash
+Combines all commits from the source branch into a single merge commit in the destination
+branch
+
+3-way merge
+git merge --no-ff
+Creates a merge commit and adds individual source commits to the destination branch
+
+--
+check delete source branch
+
+--
+Securing the repository and branches
+https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-conditional-branch.html
+
+create inline policie - json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": [
+                "codecommit:GitPush",
+                "codecommit:DeleteBranch",
+                "codecommit:PutFile",
+                "codecommit:MergeBranchesByFastForward",
+                "codecommit:MergeBranchesBySquash",
+                "codecommit:MergeBranchesByThreeWay",
+                "codecommit:MergePullRequestByFastForward",
+                "codecommit:MergePullRequestBySquash",
+                "codecommit:MergePullRequestByThreeWay"
+            ],
+            "Resource": "arn:aws:codecommit:us-east-2:111111111111:MyDemoRepo",
+            "Condition": {
+                "StringEqualsIfExists": {
+                    "codecommit:References": [
+                        "refs/heads/main", 
+                        "refs/heads/prod"
+                     ]
+                },
+                "Null": {
+                    "codecommit:References": "false"
+                }
+            }
+        }
+    ]
+}
+
+
+git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 359 bytes | 359.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Access denied: You don't have permission to push changes to this branch.
+To ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/my_demoaws
+ ! [remote rejected] master -> master (You don't have permission to push changes to this branch.)
+error: failed to push some refs to 'ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/my_demoaws'
