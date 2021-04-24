@@ -378,3 +378,15 @@ Rules
 
 
 Cloud watch events
+
+
+---
+https://aws.amazon.com/es/blogs/devops/
+https://aws.amazon.com/es/blogs/devops/validating-aws-codecommit-pull-requests-with-aws-codebuild-and-aws-lambda/
+Pull request
+
+
+
+-------
+AWS Code Deploy
+
