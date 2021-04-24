@@ -351,4 +351,30 @@ CodeBuild
 Name: DB_URL    Value:my-db-url    Type:PlainText
 Name: DB_PASSWORD  Value:/Prod/DbPassword    Type:Parameter
 
+----
+Artifacts
 
+buildspec.yml
+artifacts:
+  files:
+    - '**/*'
+  name: myname-$(date +%Y-%m-%d)
+
+Edit Artifacts
+Amazon s3
+ - select bucket
+
+-----
+https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html
+Cloud watch logs, metrics
+Rules
+  Schedule			OR   		Event Pattern
+	every 1 hour					ServiceName: CodeBuild
+							EventType: CodeBuild Build State Change
+   Target
+ 	CodeBuildProject
+	  ARN: arn:aws:codebuild:region-ID:account-ID:project/project-name
+      
+
+
+Cloud watch events
