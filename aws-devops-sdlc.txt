@@ -388,5 +388,77 @@ Pull request
 
 
 -------
+Create EC2 Instance and install agent to CodeDeploy
+
+sudo yum update -y
+sudo yum install -y ruby wget
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+chmod +x ./install
+sudo ./install auto
+sudo service codedeploy-agent status
+
+
 AWS Code Deploy
+create Application
+
+Create Deployment Group //(set of ec2 instances)
+
+--
+go to iam and create CodeDeploy Role
+--
+Service role
+  Enter a service role
+  CodeDedploy
+
+Deployment type
+  In-place   
+Updates the instances in the deployment group with the latest application revisions. 
+During a deployment, each instance will be briefly taken offline for its update
+
+  or  Blue/Green
+Replaces the instances in the deployment group with new instances and deploys
+the latest application revision to them. After instances in the replacement 
+environment are registered with a load balancer, 
+instances from the original environment are deregistered and can be terminated.
+
+
+Environment configuration
+  Amazon EC2 instances  - Tag Group
+  key Environment      Value Development
+
+
+Deployment settings
+ CodeDeployDefaultAllAtOnce
+
+Load balancer
+
+
+*Create deployment
+
+
+s3 bucket, it's necesary create s3 bucket: 
+https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/mb.html
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configu
+re-profiles.html
+aws configure --profile aws-devops
+
+aws s3 mb s3://aws-devops-strevens --region us-east-1 --profile aws-devops
+aws s3api put-bucket-versioning --bucket aws-devops-strevens --versioning-configuration Status=Enabled --region us-east-1 --profile aws-devops
+
+In appspec.yml
+aws deploy push --application-name CodeDeployDemo --s3-location s3://aws-devops-strevens/codedeploy-demo/app.zip --ignore-hidden-files --region us-east-1 --profile aws-devops
+
+
+Revision location
+  Copy and paste the Amazon S3 bucket where your revision is stored
+Create
+---
+Deployment lifecycle events
+  View Events
+
+go to ec2 instance - add http protocol, port 80, in security group
+
+use the dns public
+http://ec2-3-94-191-149.compute-1.amazonaws.com/
 
