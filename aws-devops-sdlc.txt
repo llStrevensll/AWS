@@ -462,3 +462,26 @@ go to ec2 instance - add http protocol, port 80, in security group
 use the dns public
 http://ec2-3-94-191-149.compute-1.amazonaws.com/
 
+
+--
+Deployment groups
+ Launch More Like this
+     Edit Instances details - 4 instance
+      Advance Details
+ 	 #/bin/bash
+  	sudo yum update -y
+	sudo yum install -y ruby wget
+	wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+	chmod +x ./install
+	sudo ./install auto
+	sudo service codedeploy-agent status
+
+Tag 3 instance
+Environment     Production
+Tag 2 instances
+Environment	Development
+
+Create Deployment Group
+ DeploymentInstancesProduction
+
+
