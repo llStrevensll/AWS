@@ -10,6 +10,7 @@ sudo service codedeploy-agent status
 ```
 
 ## bucket-name represents one of the following:
+```
 ## aws-codedeploy-us-east-1 for instances in the US East (N. Virginia) region
 ## aws-codedeploy-us-west-1 for instances in the US West (N. California) region
 ## aws-codedeploy-us-west-2 for instances in the US West (Oregon) region
@@ -19,7 +20,7 @@ sudo service codedeploy-agent status
 ## aws-codedeploy-ap-southeast-1 for instances in the Asia Pacific (Singapore) region
 ## aws-codedeploy-ap-southeast-2 for instances in the Asia Pacific (Sydney) region
 ## aws-codedeploy-sa-east-1 for instances in the South America (São Paulo) region
-
+```
 
 # create a bucket and enable versioning
 ```
