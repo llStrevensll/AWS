@@ -509,7 +509,76 @@ https://uniwebsidad.com/foro/pregunta/238/que-significa-el-valor-21-utilizado-en
 
 ---
 https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html
+Lifecycle event hook availability
 
 https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-example.html
 
-   
+
+Environment variable availability for hooks
+https://docs.amazonaws.cn/en_us/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#reference-appspec-file-structure-environment-variable-availability
+
+aws cloud watch
+https://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-cloudwatch-events.html
+
+ Target:
+  Lambda
+  Kinesis Stream
+  EC2 RebootIntances API call
+
+
+
+deployment group
+ edit
+  Advanced - optional
+    Triggers (That subscribes to a topic in Amazon Simple Notification Service 'SNS', to receive notifications about deployment and instance events in this deployment group
+              You can create up to 10 triggers
+
+
+----
+Redeploy and Rollbacks
+https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments-rollback-and-redeploy.html
+deployment group
+ edit
+  Advanced - optional
+    Rollbacks
+       Roll back when a deployment fails
+       Roll back when alarm thresholds are met  -(percentage cpu)
+
+    Alarms - cloudwatch alarm
+
+cloudwatch alarm
+ select metric
+   ec2
+     pre-instance metrics
+        cpu-utilization
+
+-------------
+-------------
+On-Premises instance setup
+https://docs.aws.amazon.com/codedeploy/latest/userguide/register-on-premises-instance-iam-user-arn.html
+
+create ec2 instance with tags
+create user in iam (programatic access)
+ attach policies - AmazonS3ReadOnly
+
+connect ec2 instance (add key, secret key, user arn, region)
+ sudo nano /etc/codedeploy-agent/conf/conf.onpremises.yml
+
+install code deploy agent on ec2
+
+register instance
+aws deploy register-on-premises-instance --instance-name AssetTag12010298EX --iam-user-arn arn:aws:iam::80398EXAMPLE:user/CodeDeployUser-OnPrem
+
+CodeDeploy
+ On-Premises Instances: 
+    edit tags
+        Name: Onpremise
+	Environment: Development
+
+Create New DeploymentGroup
+ check On-premises instences
+ Key		Value
+   Environment: Development
+
+Create deployment
+
