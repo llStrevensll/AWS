@@ -582,3 +582,18 @@ Create New DeploymentGroup
 
 Create deployment
 
+-----
+create application
+  Compute Platform: Lambda
+
+deployment group
+rol : codedeploy lambda
+
+ deployment settings
+  https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html#deployment-configuration-lambda
+  Canary
+  Linear
+  All-at-once
+
+
+https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda
