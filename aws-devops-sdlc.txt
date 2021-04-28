@@ -597,3 +597,24 @@ rol : codedeploy lambda
 
 
 https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda
+====
+CodePipeline
+Service role
+Advanced settings
+  Artifact store
+   Default location - custom locations
+
+Source - aws codecommit
+Build proveder  optional
+Deploy  -aws codedeploy
+
+
+--
+add stage: code build
+
+
+---
+upload s3 bucket
+----
+deploy to production
+  
