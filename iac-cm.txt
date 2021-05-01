@@ -1,0 +1,39 @@
+CloudFormation
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
+=======
+Parameters
+Can be controlled by all these settings:
+
+*Type:
+  - String
+  - Number
+  - CommaDelimitedList
+  - List<Type>
+  - AWS Parameter (to help catch invalid values - 
+                   match against existing values in the AWS Account)
+*Description
+*Constraints
+*ConstraintsDescription (String)
+*Min/MaxLength
+*Min/MaxValue
+*Defaults
+*AllowedValues (array)
+*AllowedPattern (regexp)
+*NoEcho (Boolean)
+
+The Fn::Ref function can be leveraged to reference parameters
+!Ref
+
+
+Concept:Pseudo Parameters
+Reference Value                   ExampleReturn Value
+AWS::AccountId			     12345677890
+AWS::NotificationARNs		     [arn:aws:sns:us-east-1:123456789012:MyTopic]
+AWS::NoValue			     Does not return a value
+AWS::Region			     us-east-1
+AWS::StackId			     arn:aws:cloudformation:us-east-1:1234567890:stack/MyStack/1c2fa620-982a-11e3-aff7-50e2416294e0
+AWS::StackName			     MyStack
+
+========
+Resources
