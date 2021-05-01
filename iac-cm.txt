@@ -37,3 +37,10 @@ AWS::StackName			     MyStack
 
 ========
 Resources
+They represents the different AWS Components that will be created and configured
+Resources are declared and can reference each other
+AWS figures out creation, updates and deletes of resources for us
+
+There are over 224 type of resources
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html
+
