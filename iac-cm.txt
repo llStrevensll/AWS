@@ -208,7 +208,76 @@ Fn::If
 Fn::Not
 Fn::Or
 
+========
+User Dta in EC2 for CloudFormation
+We can have user data at EC2 instance launch through the console
+The important thing to pass is the entire script through the function Fn:Base64
 
+UserData: 
+        Fn::Base64: |
+          #!/bin/bash -xe
+          yum update -y
+          yum install -y httpd
+          systemctl start httpd
+          systemctl enable httpd
+          echo "Hello World from user data" > /var/www/html/index.html
 
+into ec2 instance
+cat /var/log/cloud-init-output.log
 
+========
+cfn-init
+AWS::CloudFormation::Init must be in the Metadata of a resource
+
+UserData: 
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash -xe
+            # Get the latest CloudFormation package
+            yum update -y aws-cfn-bootstrap
+            # Start cfn-init
+            /opt/aws/bin/cfn-init -s ${AWS::StackId} -r MyInstance --region ${AWS::Region} || error_exit 'Failed to run cfn-init'
+    Metadata:
+      Comment: Install a simple Apache HTTP page
+      AWS::CloudFormation::Init:
+        config:
+          packages:
+            yum:
+              httpd: []
+          files:
+            "/var/www/html/index.html":
+              content: |
+                <h1>Hello World from EC2 instance!</h1>
+                <p>This was created using cfn-init</p>
+              mode: '000644'
+          commands:
+            hello:
+              command: "echo 'hello world'"
+          services:
+            sysvinit:
+              httpd:
+                enabled: 'true'
+                ensureRunning: 'true'
+
+cat var/log/cfn-init.log
+cat var/log/cfn-init-cmd.log
+============
+cfn-signal - wait conditions
+
+Fn::Base64:
+          !Sub |
+            #!/bin/bash -xe
+            # Get the latest CloudFormation package
+            yum update -y aws-cfn-bootstrap
+            # Start cfn-init
+            /opt/aws/bin/cfn-init -s ${AWS::StackId} -r MyInstance --region ${AWS::Region}
+            # Start cfn-signal to the wait condition
+            /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackId} --resource SampleWaitCondition --region ${AWS::Region}
+
+SampleWaitCondition:
+    CreationPolicy:
+      ResourceSignal:
+        Timeout: PT2M
+        Count: 1
+    Type: AWS::CloudFormation::WaitCondition
 
