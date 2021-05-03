@@ -80,7 +80,7 @@ Mappings:
       "32": "ami-6411e20d"
       "64": "ami-7a11e213"
     us-west-1:
-      "32": "ami-6411e20d"
+      "32": "ami-6411e2o0d"
       "64": "ami-7a11e213"
     eu-east-1:
       "32": "ami-6411e20d"
@@ -91,6 +91,124 @@ Resources:
     Properties:
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", 32]
       IntanceType: m1.small
+=========
+
+Outputs
+The Outputs section declares optional outputs values that we can import into other stacks
+(if you export them first)
+View the outputs in the AWS Console or in using the AWS CLI
+
+Outputs:
+  StackSSHSecurityGroup:
+    Description: The SSH Security Group for our COmpany
+    Value: !Ref MyCompanyWideSSHSecurityGroup
+    Export:
+      Name: SSHSecurityGroup
+
+
+Resources:
+  MySecureInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-1a
+      ImageId: ami-a4c7ebd2
+      InstanceType: t2.micro
+      SecurityGroups:
+	- !ImportValue SSHSecurityGroup
+
+
+==================
+Conditions
+The logical ID is for you to choose It's how you name condition
+The instrinsic function(logical) can be any of the following:
+Fn::And
+Fn::Equals
+Fn::If
+Fn::Not
+Fn::Or
+
+
+Conditions:
+  CreateProdResources: !Equals [ !Ref EnvType, prod ]
+
+Resources:
+  MountPoint:
+    Type: "AWS::EC2::VolumeAttachment"
+    Condition: CreateProdResources
+
+====================
+Go to return values
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-instance.html
+
+Intrinsic Functions
+
+Fn::Ref function can be leveraged to reference
+  *Parameters => returns the value of the parameter
+  *Resources => returns the physical ID of the underlying resorce (ex: EC2 ID)
+
+DbSubnet1:
+  Type: AWS::EC2::Subnet
+  Properties:
+    VpcId: !Ref MyVPC
+
+Fn::GetAtt
+Attributes are attached to any resources you create
+
+Resources:
+  EC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId: ami-1234567
+      InstanceType: t2.micro
+
+  NewVolume:
+    Type: "AWS::EC2::Volume"
+    Condition: CreateProdResources
+    Properties:
+      Size: 100
+      AvailabilityZone:
+        !GetAtt EC2Instance.AvailabilityZone
+
+Fn::FindInMap
+!FindInMap [MapName, TopLvelKey, SecondLevelKey]
+
+   ImageId: !FindInMap [RegionMap, !Ref"AWS::Region", 32]
+
+
+Fn::ImportValue
+Import values that are exported in other templates
+
+Resources:
+  MySecureInstance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      AvailabilityZone: us-east-1a
+      ImageId: ami-1234567
+      InstanceType: t2.micro
+      SecurityGroups:
+        - !ImportValue SSHSecurityGroup
+
+
+Fn::Join
+!Join [ delimeter, [comma-delimited lsit of values ] ]
+!Join [ ":", [ a, b, c] ]    -  "a:b:c"
+
+Fn::Sub
+!Sub as a shorthand, is used to substitute variables from a text
+String must contain ${VariableName} and will substitute them
+!Sub
+  - String
+  - { Var1Name: Var1Value, Var2Name: Var2Value }
+
+
+Condition Functions (Fn::If, Fn::Not, Fn::Equals,..)
+Fn::And
+Fn::Equals
+Fn::If
+Fn::Not
+Fn::Or
+
+
 
 
 
