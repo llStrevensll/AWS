@@ -283,3 +283,13 @@ SampleWaitCondition:
         Count: 1       #1 instance
     Type: AWS::CloudFormation::WaitCondition
 
+------
+Stack creation options
+  Rollback on failure
+  *Disabled
+------
+Nested stacks
+Nested stacks are stacks created as part of other stacks. You create a nested stack within another stack by using the AWS::CloudFormation::Stack resource.
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html
+
+------
