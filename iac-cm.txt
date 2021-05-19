@@ -227,6 +227,7 @@ cat /var/log/cloud-init-output.log
 
 ========
 cfn-init
+https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/cfn-init.html
 AWS::CloudFormation::Init must be in the Metadata of a resource
 
 UserData: 
@@ -263,6 +264,7 @@ cat var/log/cfn-init.log
 cat var/log/cfn-init-cmd.log
 ============
 cfn-signal - wait conditions
+https://docs.aws.amazon.com/es_es/AWSCloudFormation/latest/UserGuide/cfn-signal.html
 
 Fn::Base64:
           !Sub |
@@ -277,7 +279,7 @@ Fn::Base64:
 SampleWaitCondition:
     CreationPolicy:
       ResourceSignal:
-        Timeout: PT2M
-        Count: 1
+        Timeout: PT2M  #2minutes
+        Count: 1       #1 instance
     Type: AWS::CloudFormation::WaitCondition
 
