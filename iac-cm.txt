@@ -318,3 +318,26 @@ EBS Volume, ElastiCache Cluster, ElastiCache ReplicationGroup
 RDS DBInstance, RDS DBCluster, Redshift Cluster
 
 DeletionPolicy=Delete
+
+---
+Select stack
+ Actions
+   Edit temination protection
+    Enable
+
+----------
+----------
+System Manger - Parameter Store
+Name: /EC2/Instance/Type
+Type: String
+Value: t2.micro
+
+-----
+public parameter
+aws ssm get-parameters-by-path --path /aws/service/ami-amazon-linux-latest  --query 'Parameters[].Name'
+aws ssm get-parameters-by-path --path "/aws/service/ami-windows-latest" --region us-east-1
+
+---
+DependsOn
+DependsOn: MyDB
+Create ec2 instance after myDBInstance has been successfully created
