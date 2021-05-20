@@ -293,3 +293,17 @@ Nested stacks are stacks created as part of other stacks. You create a nested st
 https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html
 
 ------
+Change sets
+When you need to update a stack, understanding how your changes will affect running resources before you implement them can help you update stacks with confidence. 
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html
+
+
+create 0-just-ec2.yaml
+
+after create
+select stak 
+  Actions
+     Create change set for current stack
+        Replace current template
+           Upload a template file
+             1-ec2-with-sg-eip.yaml
