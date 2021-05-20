@@ -341,3 +341,19 @@ aws ssm get-parameters-by-path --path "/aws/service/ami-windows-latest" --region
 DependsOn
 DependsOn: MyDB
 Create ec2 instance after myDBInstance has been successfully created
+
+----
+Lambda
+
+to 13.2-lambda-s3.yml
+stack
+ Parameters
+   S3BucketParam: aws-devops-stre #name bucket
+   S3KeyParam: lambda/lambda-function.zip
+
+
+add version object param into 
+13.3-lambda-s3-version.yml
+
+
+bucket use version id
