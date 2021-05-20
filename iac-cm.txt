@@ -307,3 +307,14 @@ select stak
         Replace current template
            Upload a template file
              1-ec2-with-sg-eip.yaml
+
+------
+DeletionPolicy=Retain
+specify on resource to preserve /backup in case of CloudFormation deletes
+to keep a resource, specify Retain (works for any resource / nested stack)
+
+DeletionPolicy=Snapshot
+EBS Volume, ElastiCache Cluster, ElastiCache ReplicationGroup
+RDS DBInstance, RDS DBCluster, Redshift Cluster
+
+DeletionPolicy=Delete
