@@ -1,3 +1,5 @@
+---
+VPC
 #!/bin/bash
 # Install Apache Web Server and PHP
 yum install -y httpd mysql php
@@ -10,7 +12,24 @@ unzip lab-app.zip -d /var/www/html/
 chkconfig httpd on
 service httpd start
 
+====
+EC2
+#!/bin/bash
 
+yum -y install httpd
+
+systemctl enable httpd
+
+systemctl start httpd
+
+echo '<html><h1>Hello From Your Web Server!</h1></html>' > /var/www/html/index.html
+
+====
+Click the Monitoring tab.
+--
+In the Actions menu, select Monitor and troubleshoot Get System Log.
+
+======
 VPC - LAB
 =====
 Task 1: Create Your VPC
