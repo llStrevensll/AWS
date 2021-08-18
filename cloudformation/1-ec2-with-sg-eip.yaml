@@ -1,8 +1,8 @@
 ---
-Parameters:
-  SecurityGroupDescription:
-    Description: Security Group Description
-    Type: String
+# Parameters:
+#   SecurityGroupDescription:
+#     Description: allow connections from specified CIDR ranges
+#     Type: String
 
 Resources:
   MyInstance:
@@ -33,10 +33,12 @@ Resources:
         ToPort: 22
 
   # our second EC2 security group
+  #allow connections from specified CIDR ranges
+  #!Ref SecurityGroupDescription
   ServerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: !Ref SecurityGroupDescription
+      GroupDescription: allow connections from specified CIDR ranges
       SecurityGroupIngress:
       - IpProtocol: tcp
         FromPort: 80
