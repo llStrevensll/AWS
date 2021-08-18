@@ -1,3 +1,8 @@
+vscode
+https://stackoverflow.com/questions/53470329/aws-sam-yaml-template-unknown-tag-ref
+unknow tag
+ Redhat yaml - extension 
+
 CloudFormation
 
 https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
@@ -209,7 +214,7 @@ Fn::Not
 Fn::Or
 
 ========
-User Dta in EC2 for CloudFormation
+User Data in EC2 for CloudFormation
 We can have user data at EC2 instance launch through the console
 The important thing to pass is the entire script through the function Fn:Base64
 
