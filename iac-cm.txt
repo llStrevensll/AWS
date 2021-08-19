@@ -1,8 +1,45 @@
+Errors with security group in default Vpc
+https://stackoverflow.com/questions/67893072/cloud-formation-failed-to-create-security-group-with-vpcidnotspecified
+https://stackoverflow.com/questions/65215905/how-to-use-existing-vpc-in-aws-cloudformation-template-for-new-securitygroup
+https://stackoverflow.com/questions/56676108/cloudformation-throws-value-for-parameter-groupid-is-invalid-the-value-cann
+
+"SecurityGroupIds" : [ 
+              { "Fn::GetAtt" : [ "InstanceSecurityGroup", "GroupId" ] }
+            ]
+
+SecurityGroupIds:
+        - !GetAtt 'InstanceSecurityGroup.GroupId'
+
+
+"SecurityGroupIds": [
+                    {
+                        "Fn::GetAtt": [
+                            "InstanceSecurityGroup",
+                            "GroupId"
+                        ]
+                    }
+                ]
+
+
+SecurityGroupIds:
+        - !GetAtt 
+          - InstanceSecurityGroup
+          - GroupId
+
+==========
 vscode
 https://stackoverflow.com/questions/53470329/aws-sam-yaml-template-unknown-tag-ref
 unknow tag
  Redhat yaml - extension 
 
+
+=====
+Basic Concepts
+Template: Describe resources and the interaction between these
+Stack: Manage resources define for the template as one unit
+       A stack is created since a template
+       You can create, update and delete resources of the stack or the complete stack
+=====
 CloudFormation
 
 https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
