@@ -39,6 +39,24 @@ Template: Describe resources and the interaction between these
 Stack: Manage resources define for the template as one unit
        A stack is created since a template
        You can create, update and delete resources of the stack or the complete stack
+
+
+Resource Structure:
+
+Resources:
+  Logical ID:
+    Type: Resource type
+    Properties:
+      Set of properties
+
+Output Structure:
+
+Outputs:
+  Logical ID:
+    Description: Information about the value
+    Value: Value to return
+    Export:
+      Name: Value to export  #Usado por otros stacks para obtener el valor
 =====
 CloudFormation
 
