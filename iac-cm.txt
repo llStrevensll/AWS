@@ -57,6 +57,23 @@ Outputs:
     Value: Value to return
     Export:
       Name: Value to export  #Usado por otros stacks para obtener el valor
+
+---
+Metadata
+AWS::CloudFormation::Init       -Define la configuración de tareas para cfn-init
+AWS::CloudFormation::Interface  -Define el orden de parametros de entrada cuando se muestra en la consola
+AWS::CloudFormation::Designer   -Describe como se presentan los recursos en cloudformation designer
+---
+User Data
+With user-data script -> replace update
+With init -> in-place update
+
+
+https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/user-data.html
+http://ec2-3-85-36-79.compute-1.amazonaws.com/phpinfo.php
+
+ view logs
+ /var/log/cloud-init-output.log
 =====
 CloudFormation
 
