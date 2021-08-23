@@ -74,6 +74,41 @@ http://ec2-3-85-36-79.compute-1.amazonaws.com/phpinfo.php
 
  view logs
  /var/log/cloud-init-output.log
+
+--
+CloudFormation helper scripts
+4 type scripts
+*cfn-init:
+    Obtain and analyze metadata of AWS CloudFormation
+    Install packages
+    Write files in the disk
+    Enable/Disable and start/stop services
+
+*cfn-signal
+    Send a signal to CloudFormation for indicate if this was created or 
+    updated correctly in an instance EC2
+
+*cfn-get-metadata:
+    It allows recovery a block of a metadata of AWS CloudFormation and print in a standard output
+
+*cfn-hup:
+    It is a deamon that can detect changes in the resources of metadata and 
+    execute specific actions for the user when it detects a change
+
+CloudFormation Init
+Packages: Install a packages list
+Groups : Define user groups
+Users:  Define users and groups to which it belongs
+Sources: Download a file and put it in an ec2 instance
+Files:  Create a file in an ec2 instance
+Commands:  Execute a series of commands
+Services: Launch a list of sysvinit
+
+Function Fn::Sub
+!Sub Substitute variables in an input chain for the values that you specify
+In the templates is used to build commands that include values that not are available until the create or update the stack
+The value need to have the next format ${VariableName} so it can be substituted
+
 =====
 CloudFormation
 
