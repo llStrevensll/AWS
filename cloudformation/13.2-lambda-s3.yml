@@ -44,6 +44,6 @@ Resources:
           - "Arn"
       Runtime: "python3.7"
       Code: 
-        S3Bucket: !Ref S3BucketParam
-        S3Key: !Ref S3KeyParam
+        S3Bucket: !Ref S3BucketParam #name bucket
+        S3Key: !Ref S3KeyParam  #name folder/file.zip
         

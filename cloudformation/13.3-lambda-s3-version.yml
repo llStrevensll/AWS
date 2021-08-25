@@ -3,7 +3,7 @@ Parameters:
     Type: String
   S3KeyParam:
     Type: String
-  S3ObjectVersionParam:
+  S3ObjectVersionParam: #
     Type: String
 
 Resources: 
@@ -47,8 +47,8 @@ Resources:
       Runtime: "python3.7"
       Code: 
         S3Bucket: 
-          Ref: S3BucketParam
+          Ref: S3BucketParam #name bucket
         S3Key: 
-          Ref: S3KeyParam
+          Ref: S3KeyParam #name folder/file.zip
         S3ObjectVersion:
-          Ref: S3ObjectVersionParam
+          Ref: S3ObjectVersionParam  #versionid for the file in S3

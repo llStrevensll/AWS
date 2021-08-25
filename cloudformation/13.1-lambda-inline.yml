@@ -11,18 +11,18 @@ Resources:
             - lambda.amazonaws.com
           Action:
           - sts:AssumeRole
-      Path: "/"
-      Policies:
+      Path: "/" 
+      Policies: #
       - PolicyName: root
         PolicyDocument:
           Version: '2012-10-17'
           Statement:
           - Effect: Allow
-            Action:
+            Action: #
             - "s3:*"
             Resource: "*"
           - Effect: Allow
-            Action:
+            Action: #
             - "logs:CreateLogGroup"
             - "logs:CreateLogStream"
             - "logs:PutLogEvents"
@@ -31,7 +31,7 @@ Resources:
   ListBucketsS3Lambda: 
     Type: "AWS::Lambda::Function"
     Properties: 
-      Handler: "index.handler"
+      Handler: "index.handler" #
       Role: 
         Fn::GetAtt: 
           - "LambdaExecutionRole"

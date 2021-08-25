@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Mappings:
   AWSRegionArch2AMI:
     us-east-1:
-      HVM64: ami-6869aa05
+      HVM64: ami-0ff8a91507f77f867
     us-west-2:
       HVM64: ami-7172b611
     us-west-1:
@@ -33,6 +33,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: !FindInMap [AWSRegionArch2AMI, !Ref 'AWS::Region', HVM64]
+      InstanceType: t2.micro #Specify the Instance type to prevent error in aws educate
     DependsOn: MyDB #create ec2 instance Depending on whether the DB has been successfully created - 
 
   MyDB:
