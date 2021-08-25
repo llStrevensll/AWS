@@ -33,18 +33,18 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: !FindInMap [AWSRegionArch2AMI, !Ref 'AWS::Region', HVM64]
-    DependsOn: MyDB
+    DependsOn: MyDB #create ec2 instance Depending on whether the DB has been successfully created - 
 
   MyDB:
     Type: AWS::RDS::DBInstance
     Properties:
       AllocatedStorage: '5'
-      DBInstanceClass: db.t2.micro
+      DBInstanceClass: db.t2.small
       Engine: MySQL
       EngineVersion: "5.7.22"
       MasterUsername: MyName
       MasterUserPassword: MyPassword
-    # Readme - note: Added a DeletionPolicy (not shown in the video)
+    # Added a DeletionPolicy
     # This ensures that the RDS DBInstance does not create a snapshot when it's deleted
-    # Otherwise, you would be billed for the snapshot :)
+    # Otherwise, you would be billed for the snapshot
     DeletionPolicy: Delete

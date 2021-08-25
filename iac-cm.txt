@@ -27,6 +27,14 @@ SecurityGroupIds:
           - GroupId
 
 ==========
+AWS Educate Accounts come with following restrictions on services:
+IAM: You can create users, but cannot attach a login profile. You are not permitted to use SAML or third party providers with IAM. You cannot create access keys for additional users.
+EC2: Creation of VPN gateways, VPN links, NAT gateways and Inspector is not permitted.
+EC2 and RDS: Reserved Instance Purchases are not permitted.
+EC2 supported instances types: Starter accounts are limited to “t2.small”, “t2.micro”, “t2.medium”, “c5.large”, “m5.large”. If additional instance types are desired, please ask your educator to request a Classroom. Certain instance types may not be available in Classrooms
+RDS supported instance typesL "db.t2.small", "db.m1.small", "db.t2.medium"
+Route53: Domain name registration not supported.
+==========
 vscode
 https://stackoverflow.com/questions/53470329/aws-sam-yaml-template-unknown-tag-ref
 unknow tag
