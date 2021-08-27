@@ -477,3 +477,20 @@ add version object param into
 
 
 bucket use version id
+
+----
+Custom Resource
+ LambdaUsedToCleanUp:
+    Type: Custom::cleanupbucket
+    Properties:
+      ServiceToken: !ImportValue EmptyS3BucketLambda
+      BucketName: !Ref myBucketResource
+
+
+----
+Drift - detect manual changes in the resources
+Stack Actions
+  Detect Drift
+
+For the example with security groups when you update de inbound rules, this detects change
+                                      but if you update the output rules it doesn't detect the change
