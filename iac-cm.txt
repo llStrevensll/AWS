@@ -494,3 +494,21 @@ Stack Actions
 
 For the example with security groups when you update de inbound rules, this detects change
                                       but if you update the output rules it doesn't detect the change
+
+
+----
+Stack Policy
+
+Advanced options
+   Stack Policy
+        Upload a file
+
+
+===========================
+===========================
+Elastic Beanstalk
+install MANUAL:
+https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install-windows.html
+
+install SCRIPT:
+https://github.com/aws/aws-elastic-beanstalk-cli-setup
