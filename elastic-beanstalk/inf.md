@@ -44,6 +44,7 @@ Printing Status:
 2021-08-27 21:52:46    INFO    Successfully launched environment: dev-env
 
 
+
 eb open
 eb
 eb status
@@ -109,3 +110,25 @@ Create new environments from saved configurations
 # you can create environments from configurations
 eb create prod-env --cfg prod
 ```
+
+## Configuration
+```
+eb deploy
+```
+.ebextensions
+connect with ssh, and run:
+```
+yum install jq
+/opt/elasticbeanstalk/bin/get-config environment
+/opt/elasticbeanstalk/bin/get-config environment | jq
+/opt/elasticbeanstalk/bin/get-config environment -k NOTIFICATION_TOPIC
+/opt/elasticbeanstalk/bin/get-config environment -k DYNAMODB_TABLE
+/opt/elasticbeanstalk/bin/get-config optionsettings
+/opt/elasticbeanstalk/bin/get-config optionsettings | jq
+```
+
+You need to create an external table and reference this in the environment properties to prevent the deletion of this table when the environment is deleted
+
+
+---
+cat /var/www/html/index.html
