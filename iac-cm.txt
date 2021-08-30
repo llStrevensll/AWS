@@ -512,3 +512,34 @@ https://docs.aws.amazon.com/es_es/elasticbeanstalk/latest/dg/eb-cli3-install-win
 
 install SCRIPT:
 https://github.com/aws/aws-elastic-beanstalk-cli-setup
+
+
+------
+Features
+Web server environment
+   Configuration presents: Low cost (Free Tier eligible)
+                           High availability
+                           Custom Configuration
+
+Aplication version
+  settings 
+    Aplication version lifecycle settings:
+    Lifecycle Policy
+    Lifecycle rule
+    Retention
+    Service role
+
+Environment
+  Clone Environment
+  Terminate Environment
+  Rebuild Environment: Delete and re create everything it for you
+
+======
+Elastic Beanstalk Deployment Modes
+All at once (deploy all in one go): fastest, but instances aren't available to server traffic for a bit(downtime)
+
+Rolling: Update a few instances at a time (bucket), and then move onto the next bucket onece the fist bucket is healthy
+
+Rolling with additional batches: like rolling, but spins up new instances to move the batch(so that the old application is still available)
+
+Inmutable: spins up new instances in a new ASG, deploys version to these instances, and then swaps all instances when evertyhing is healthy
