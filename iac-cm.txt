@@ -543,3 +543,28 @@ Rolling: Update a few instances at a time (bucket), and then move onto the next 
 Rolling with additional batches: like rolling, but spins up new instances to move the batch(so that the old application is still available)
 
 Inmutable: spins up new instances in a new ASG, deploys version to these instances, and then swaps all instances when evertyhing is healthy
+
+
+--
+Modify rolling updates and deployments
+Application deployments: All at once, Rolling, Inmutable
+
+Configuration Updates: Rolling based on Health, Rolling based on Time, Inmutable
+
+Deployment preferences: Ignore health check, Healthy threshold(ok, warnning, degraded, servere), Command Timeout
+
+
+
+=======
+Swap environment URLs
+elastic beanstalk
+  environment
+     Actions -> Swap environment  URLs
+
+With this swap, the people see both version for a little bit of time
+
+=======
+Worker environments
+So a worker environment is an application that processes long running workloads, such as encoding a video on demand or perform tasks on the schedule.
+
+cron.yaml

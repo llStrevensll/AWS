@@ -131,4 +131,6 @@ You need to create an external table and reference this in the environment prope
 
 
 ---
+```
 cat /var/www/html/index.html
+```
