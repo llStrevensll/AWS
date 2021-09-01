@@ -568,3 +568,28 @@ Worker environments
 So a worker environment is an application that processes long running workloads, such as encoding a video on demand or perform tasks on the schedule.
 
 cron.yaml
+
+=====
+Lambda
+create lambda
+
+test
+
+logs in CloudWatch
+  -Log Groups
+
+---
+triggers
+---
+Environment Variables
+   KMS(key management services)
+
+permission (IAM)
+  rol
+    inline Policy
+       service: KMS
+       actions: write-decrypt
+       resource: specific resource - add arn (ARM for my kms)
+
+--
+parameter store
