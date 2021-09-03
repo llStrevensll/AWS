@@ -593,3 +593,18 @@ permission (IAM)
 
 --
 parameter store
+
+---------
+AWS Lambda Aliases
+Aliases are "pointers" to Lambda function version
+We can define a "dev", "test", "prod" aliases and have them pint at different lambda version
+Aliases are mutable
+
+[users]
+{DEV alias(mutable)} - {PROD alias(mutable)} - {TEST alias(mutable)}
+$LATEST(mutable)     -  V1(Inmutable)        -  V2(Inmutable)
+
+
+publish - version1
+edit code
+publish - version2
