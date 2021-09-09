@@ -608,3 +608,11 @@ $LATEST(mutable)     -  V1(Inmutable)        -  V2(Inmutable)
 publish - version1
 edit code
 publish - version2
+
+alias with a specific version
+
+----
+install sam cli
+https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
+
+sam --version
