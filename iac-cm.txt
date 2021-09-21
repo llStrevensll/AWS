@@ -616,3 +616,12 @@ install sam cli
 https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
 
 sam --version
+
+---
+aws step functions
+
+state machines
+
+aws cloud watch, rules
+event source
+targets:  step functions state machine
