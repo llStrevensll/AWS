@@ -625,3 +625,24 @@ state machines
 aws cloud watch, rules
 event source
 targets:  step functions state machine
+
+
+-----
+API Gateway
+Integration with lambda
+
+Stage Variables - Lambda Aliases
+
+Prod Stage         ---    PROD Alias  [95%] -> v1,  [5%]  -> v2
+Test Stage         ---    TEST Alias  [100%] -> v2
+DEV Stage          ---    DEV Alias   [100%]  -> $latest
+
+
+canary testing with lambdas 
+
+and with
+Actions
+  Deploy API - Canary
+
+Account-Level Throttling
+  Throttle API request
